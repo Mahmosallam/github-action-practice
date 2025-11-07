@@ -8,5 +8,13 @@ jobs:
   first-job-for-first-workflow:
     runs-on: ubuntu-latest
     steps:
-      - name: the-first-step-
+      - name: print-a-massage
         run: echo "wuba luba dup dup"
+      - name: checkout-repo
+        uses: actions/checkout@v6-beta
+      - name: where-am-i
+        run: |
+          ls
+          pwd
+          whoami
+          cat /etc/os-release
