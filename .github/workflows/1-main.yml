@@ -1,0 +1,12 @@
+name: first-workflow
+on:
+  push:
+    branches:
+    - main
+    
+jobs:
+  first-job-for-first-workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: the-first-step-
+        run: echo "wuba luba dup dup"
