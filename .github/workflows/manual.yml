@@ -1,9 +1,33 @@
-name: manual work-flow
+---
+# name: manual work-flow
+# on:
+#   workflow_dispatch:
+# jobs:
+#   deploy-the-app:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: deploy-app
+#       run: echo "wuba luba dup dup"
+name: manual-work-flow-using-env
 on:
   workflow_dispatch:
+    inputs:
+      enviroments: 
+        description: 'choice enviroment'
+        required: true
+        default: statging
+        type: choice
+        options:
+        - statging
+        - production
 jobs:
   deploy-the-app:
     runs-on: ubuntu-latest
     steps:
-    - name: deploy-app
-      run: echo "wuba luba dup dup"
+     - name: app-deploy
+       run: echo "the app is deployed on ${{ inputs.enviroments }}"
+
+
+
+    
+      
