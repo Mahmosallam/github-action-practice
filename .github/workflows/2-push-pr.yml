@@ -24,3 +24,18 @@ jobs:
           pwd
           npm version
           npm test 
+
+
+
+# name: third part for triggers
+# on:
+#   schedule:
+#     - cron "* * * *"
+
+# jobs:
+#     hello:
+
+#       runs-on: :ubuntu-latest
+#       steps:
+#         - name: print msg
+#           run: echo "heelo world"
