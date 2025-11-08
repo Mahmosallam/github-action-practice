@@ -1,0 +1,9 @@
+name: manual work-flow
+on:
+  workflow_dispatch:
+jobs:
+  deploy-the-app:
+    runs-on: ubuntu-latest
+    steps:
+    - name: deploy-app
+      run: echo "wuba luba dup dup"
