@@ -2,7 +2,8 @@ name: first-workflow
 on:
   push:
     branches:
-    - main
+  # - main
+    - master
     
 jobs:
   first-job-for-first-workflow:
