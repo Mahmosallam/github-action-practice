@@ -13,6 +13,7 @@ jobs:
     - run: echo "this is ${{ github.job }}"
   jobs-3:
     runs-on: ubuntu-latest
+    needs: job-1
     steps:
     - run: echo "this is ${{ github.job }}"
   jobs-4:
