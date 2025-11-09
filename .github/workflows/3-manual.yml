@@ -27,6 +27,9 @@ jobs:
      - name: app-deploy
        run: echo "the app is deployed on ${{ inputs.enviroments }}"
 
+     - name: show-env-variables
+       run : printenv
+
 
 
     
