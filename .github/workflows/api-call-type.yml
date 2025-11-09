@@ -1,0 +1,10 @@
+name: using-api-call
+on:
+  repository_dispatch:
+    type: [incident_report]
+jobs:
+  handle-incident:
+   runs-on: ubuntu-latest
+   steps:
+   - name: print incident
+     run: echo "incident report"
