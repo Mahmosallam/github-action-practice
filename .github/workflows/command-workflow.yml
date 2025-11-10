@@ -9,6 +9,6 @@ jobs:
         run: |
           depercated=true
           if [[ depercated ]]; then
-            echo "::warning-wewa-wewa::Deprecated found"
+            echo "::warning::Deprecated found"
           fi
   
