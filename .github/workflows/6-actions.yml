@@ -1,0 +1,31 @@
+name: practice-with-actions
+on:
+  workflow_dispatch
+jobs:
+  job-1:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v6-beta
+    - run: |
+        ls
+        pwd
+        node --version
+        echo "this is vm"
+    - name: Run in Alpine container
+      uses: docker://alpine:latest
+      with:
+        entrypoint: /bin/sh
+        args: -c "ls && pwd && whoami && echo 'this is from alpine container'"
+  job-2:
+    needs: job-1
+    runs-on: ubuntu-latest
+    container:
+      image: alpine:latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run commands inside Alpine
+        run: |
+          ls
+          pwd
+          whoami
+          echo "this is from alpine container"
