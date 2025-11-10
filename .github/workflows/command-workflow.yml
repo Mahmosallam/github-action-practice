@@ -1,0 +1,14 @@
+name: using-command-with-workflow
+on:
+  workflow_dispatch:
+jobs:
+  gob-1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: job1
+        run: |
+          depercated=true
+          if[[ deprecated ]]; then
+            echo "::warning-wewa-wewa::Deprecated found"
+          fi
+  
