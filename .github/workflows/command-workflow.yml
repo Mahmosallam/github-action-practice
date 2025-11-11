@@ -15,3 +15,8 @@ jobs:
         run: echo "appkey=1234" >> $GITHUB_ENV
       - name: www
         run: echo "$appkey"
+      - run: |
+         if [-f "config.yml"]; then
+           echo "::debug:: its exist"
+         else
+           echo "::error:: its not exists"
