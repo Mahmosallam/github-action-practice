@@ -11,4 +11,7 @@ jobs:
           if [[ depercated ]]; then
             echo "::warning::Deprecated found"
           fi
-  
+      - name: gob-2
+        run: echo "appkey=1234" >> $GITHUB_ENV
+      - name: www
+        run: echo "$appkey"
