@@ -16,7 +16,7 @@ jobs:
       - name: www
         run: echo "$appkey"
       - run: |
-         if [-f "config.yml"]; then
+         if [ -f "config.yml" ]; then
            echo "::debug:: its exist"
          else
            echo "::error:: its not exists"
