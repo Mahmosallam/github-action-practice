@@ -14,7 +14,9 @@ jobs:
       - name: gob-2
         run: echo "appkey=1234" >> $GITHUB_ENV
       - name: www
-        run: echo "$appkey"
+        run: |
+          echo "::add-mask::$appkey"
+          echo "$appkey"
       - run: |
          if [ -f "config.yml" ]; then
            echo "::debug:: its exist"
