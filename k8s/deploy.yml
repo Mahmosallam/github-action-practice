@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: solarsystem-app
+  labels:
+    app: solarsystem
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: solarsystem
+  template:
+    metadata:
+      labels:
+        app: solarsystem
+    spec:
+      initContainers:
+        - name: wait-for-mongo
+          image: busybox
+          command:
+            - sh
+            - -c
+            - |
+              until nc -z mongo-svc 27017; do
+                echo "Waiting for MongoDB..."
+                sleep 5
+              done
+      containers:
+      - name: solarsystem
+        image: osos3/solar:v1
+        ports:
+        - containerPort: 3000
+        env:
+        - name: NODE_ENV
+          value: "production"
+        - name: MONGO_URI
+          value: "mongodb://mongo-svc:27017/solarsystem"
+        - name: MONGO_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mongo-secret
+              key: mongo-user
+        - name: MONGO_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mongo-secret
+              key: mongo-password
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /live  
+            port: 3000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /ready  
+            port: 3000
+          initialDelaySeconds: 10
+          periodSeconds: 5

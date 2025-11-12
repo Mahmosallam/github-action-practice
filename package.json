@@ -1,10 +1,25 @@
 {
-    "name": "simple-node-app",
-    "version": "1.0.0",
-    "description": "A simple Node.js app for GitHub Actions PR testing",
-    "main": "src/app.js",
-    "scripts": {
-      "test": "bash src/test.sh"
-    },
-    "dependencies": {}
+  "name": "Solar System",
+  "version": "6.7.6",
+  "author": "Siddharth Barahalikar",
+  "license": "MIT",
+  "scripts": {
+    "start": "node app.js",
+    "test": "NODE_ENV=test mocha test-setup.js app-test.js --timeout 60000 --exit",
+    "coverage": "NODE_ENV=test nyc --reporter cobertura --reporter lcov --reporter text --reporter json-summary mocha test-setup.js app-test.js --timeout 60000 --exit"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongoose": "^6.12.0",
+    "body-parser": "^1.20.2"
+  },
+  "devDependencies": {
+    "chai": "^4.3.10",
+    "chai-http": "^4.4.0",
+    "mocha": "^10.2.0",
+    "mocha-junit-reporter": "^2.2.1",
+    "nyc": "^15.1.0",
+    "mongodb-memory-server": "^9.1.0"
   }
+}
