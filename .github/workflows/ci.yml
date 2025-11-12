@@ -36,7 +36,7 @@ jobs:
         uses: docker/build-push-action@v6.18.0
         with:
           push: true
-          tags: ${{ vars.DOCKER_USERNAME }}/solar:latest
+          tags: ${{ vars.DOCKERHUB_USERNAME }}/solar:latest
           
 
 
