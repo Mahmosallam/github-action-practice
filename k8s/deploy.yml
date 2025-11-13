@@ -27,7 +27,7 @@ spec:
               done
       containers:
       - name: solarsystem
-        image: osos3/solar:v1
+        image: osos3/solar:latest
         ports:
         - containerPort: 3000
         env:
