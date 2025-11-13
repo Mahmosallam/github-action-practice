@@ -47,5 +47,5 @@ spec:
         resources:
           requests:
             storage: 2Gi
-        # storageClassName: local-path
-        storageClassName: sc-db
+        storageClassName: local-path
+        #storageClassName: sc-db
