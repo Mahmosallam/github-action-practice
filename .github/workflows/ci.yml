@@ -37,6 +37,18 @@ jobs:
         with:
           push: true
           tags: ${{ vars.DOCKERHUB_USERNAME }}/solar:latest
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v5.1.0
+        with:
+          aws-access-key-id: ${{ secrets.aws_access_key_id }}
+          aws-secret-access-key: ${{ secrets.aws_secret_access_key }}
+          aws-region: us-east-1
+
+      - name: deploy the app
+        run: |
+          kubectl apply -f k8s/mongo/.
+          kubectl apply -f k8s/.
           
 
 
